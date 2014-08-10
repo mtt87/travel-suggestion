@@ -1,3 +1,38 @@
-<!DOCTYPE html><html class=no-js><head><meta charset=utf-8><title>travelsuggest</title><meta name=description content=""><meta name=viewport content="width=device-width"><link rel="shortcut icon" href=/a817addb.favicon.ico><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel=stylesheet type=text/css><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><script src=scripts/bdfdc721.polymer.js></script><link rel=stylesheet href=styles/ad5a8161.main.css><link rel=import href=bower_components/google-map/google-map.html><body><!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]--><div class=container><div class=page-title><h1><span class="glyphicon glyphicon-map-marker"></span>Travel Suggestion Planner <small>California 2014</small></h1><h3>20th of August - 3rd of September</h3></div></div><div class=container-fluid><div id=la1 class=trip-step><h2>Los Angeles <small>2 days</small></h2><div class=row><div class=col-sm-6><google-map latitude=37.77493 longitude=-122.41942 disabledefaultui=true zoom=10></google-map></div><div class=col-sm-6><div class="panel panel-primary"><div class=panel-body><div class=suggestion-list></div></div><div class=panel-footer><div class=suggestion-input><div class=form-group><textarea id=input-la1 rows=8 class=form-control></textarea></div><div class=text-right><p><button class="btn btn-success btn-suggest" data-trip-step=la1>Suggest</button></p></div></div></div></div></div></div></div><div id=la-vegas class=trip-step><h2>Los Angeles -> Las Vegas <small>travel</small></h2><p>Travel time: 4h</p><div class=row><div class=col-sm-6><google-map latitude=37.77493 longitude=-122.41942 disabledefaultui=true></google-map></div><div class=col-sm-6><div class="panel panel-primary"><div class=panel-body><div class=suggestion-list><div class="suggestion fade in"><div class=suggestion-author>Mattia</div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta numquam placeat, dolore alias eveniet quis rem nihil dolorum, debitis quod nulla voluptatem distinctio, praesentium consequuntur culpa qui atque recusandae voluptate.</p></div></div></div><div class=panel-footer><div class=suggestion-input><div class=form-group><textarea id=input-la-vegas rows=8 class=form-control></textarea></div><div class=text-right><p><button class="btn btn-success btn-suggest" data-trip-step=la1>Suggest</button></p></div></div></div></div></div></div></div></div><!-- Modal ask name --><div class="modal fade" id=modal-name tabindex=-1 role=dialog aria-hidden=true><div class=modal-dialog><div class=modal-content><div class="modal-body text-center"><h3>May I ask your name please?</h3><div class=form-group><input id=input-author-name class=form-control></div><p><button id=btn-save-name class="btn btn-success">Save</button></p></div></div></div></div><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=https://cdn.firebase.com/js/client/1.0.19/firebase.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><script src=scripts/fc10bb25.main.js></script>
+<!DOCTYPE html><html><head><meta charset=utf-8><title>travelsuggest</title><meta name=description content=""><meta name=viewport content="width=device-width"><link rel="shortcut icon" href=/a817addb.favicon.ico><script>var host = "mtt87.github.io/travel-suggestion"
+    if (window.location.host == host && window.location.protocol != "https:") {
+      window.location.protocol = "https:"
+    }</script><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css><link href="//fonts.googleapis.com/css?family=Roboto:400,700" rel=stylesheet type=text/css><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><script src=scripts/bdfdc721.polymer.js></script><link rel=stylesheet href=styles/b26d4c4a.main.css><link rel=import href=bower_components/google-map/google-map.html><body><div class=container><div class=page-intro><h1><span class="glyphicon glyphicon-map-marker"></span>Travel Suggestion Planner <small>California 2014</small></h1><h5>20th of August - 3rd of September</h5><div class="alert alert-info"><p class=lead>Hello friends, soon I'll be doing this road trip and I'm asking your advice if you have been or you know some places/things that I need to absolutely visit/view/do.</p></div><p class=small>ps: be patient if something is not working, it's a beta!</p></div></div><div class=container-fluid><div id=target><div class=text-center><noscript><div class="alert alert-danger center-block" style="width:300px;"><strong>Sorry ,javascript must be enabled :)</strong></div></noscript><p><i class="fa fa-refresh fa-spin fa-3x"></i></p></div></div></div><div class=container><div class=footer>Made on a rainy day in London by an Italian developer<br><i class="fa fa-heart fa-lg"></i>&nbsp;from <a href=http://mattia-asti.it>Mattia | <a href=https://github.com/mtt87/travel-suggestion><i class="fa fa-github fa-lg"></i>&nbsp;Github</a></a></div></div><!-- Modal ask name --><div class="modal fade" id=modal-name tabindex=-1 role=dialog aria-hidden=true><div class=modal-dialog><div class=modal-content><div class="modal-body text-center"><h3>May I ask your name please?</h3><div class=form-group><input id=input-author-name class=form-control></div><p><button id=btn-save-name class="btn btn-success">Save</button></p></div></div></div></div><script id=trip-step-template type=x-tmpl-mustache>{{#locations}}
+    <div id="{{id}}" class="trip-step">
+        <h2>{{ title }}
+            <small>{{time}}</small>
+        </h2>
+        <hr class="trip-separator">
+        <div class="row">
+            <div class="col-sm-5">
+                <google-map latitude="{{map.lat}}" longitude="{{map.lng}}" disableDefaultUI="true" zoom="{{map.zoom}}"></google-map>
+            </div>
+            <div class="col-sm-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="loading text-center"><i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                        <div class="suggestion-list hidden">
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="suggestion-input">
+                            <div class="form-group">
+                                <textarea id="input-{{ id }}" rows="4" class="form-control"></textarea>
+                            </div>
+                            <div class="text-right">
+                                <p>
+                                    <button class="btn btn-success btn-suggest" data-trip-step="{{id}}">Suggest</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/locations}}</script><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=https://cdn.firebase.com/js/client/1.0.19/firebase.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><script src=scripts/9449e351.vendor.js></script><script src=scripts/dcf875b1.main.js></script>
