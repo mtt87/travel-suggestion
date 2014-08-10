@@ -9,6 +9,7 @@ body {
 google-map {
     display: block;
     height: 450px;
+    border:1px solid #777;
 }
 .page-intro {
     margin-bottom: 30px;
@@ -39,6 +40,15 @@ google-map {
 }
 .footer .fa-github {
     color: #000;
+}
+.btn-suggest {
+    border-radius: 0;
+}
+.panel {
+    border-radius: 0;
+}
+.alert {
+    border-radius: 0;
 }
 .fa-spin {
     -webkit-animation: spin 1.1s infinite linear;

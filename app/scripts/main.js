@@ -53,13 +53,13 @@ var tripData = {
     var isStart = true;
     // render mustache template
     var template = $('#trip-step-template').html();
-    // Mustache.parse(template); // optional, speeds up future uses
     var rendered = Mustache.render(template, tripData);
     $('#target').html(rendered).addClass('animated fadeIn');
 
     // firebase configuration
     var firebase = new Firebase('https://travelsuggestion.firebaseio.com/');
 
+    // escape html
     var entityMap = {
         "&": "&amp;",
         "<": "&lt;",
@@ -84,6 +84,7 @@ var tripData = {
         });
     }
 
+    // check if the comments are empty
     function isEmpty(el) {
         return !$.trim(el.html());
     }
