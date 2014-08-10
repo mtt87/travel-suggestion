@@ -1,0 +1,162 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>travelsuggest</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <script src="../bower_components/platform/platform.js"></script>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <link rel="import" href="bower_components/google-map/google-map.html">
+    <style>
+    google-map {
+        display: block;
+        height: 450px;
+    }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <div class="page-title">
+            <h1>
+                <span class="glyphicon glyphicon-map-marker"></span>Travel Suggestion Planner
+                <small>California 2014</small>
+            </h1>
+            <h3>20th of August - 3rd of September</h3>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div id="la1" class="trip-step">
+            <h2>Los Angeles
+                <small>2 days</small>
+            </h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <google-map latitude="37.77493" longitude="-122.41942" disableDefaultUI="true" zoom="10"></google-map>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <div class="suggestion-list">
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="suggestion-input">
+                                <div class="form-group">
+                                    <textarea id="input-la1" rows="8" class="form-control"></textarea>
+                                </div>
+                                <div class="text-right">
+                                    <p>
+                                        <button class="btn btn-success btn-suggest" data-trip-step="la1">Suggest</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="la-vegas" class="trip-step">
+            <h2>Los Angeles -> Las Vegas
+                <small>travel</small>
+            </h2>
+            <p>Travel time: 4h</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <google-map latitude="37.77493" longitude="-122.41942" disableDefaultUI="true"></google-map>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <div class="suggestion-list">
+                                <div class="suggestion fade in">
+                                    <div class="suggestion-author">Mattia</div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta numquam placeat, dolore alias eveniet quis rem nihil dolorum, debitis quod nulla voluptatem distinctio, praesentium consequuntur culpa qui atque recusandae voluptate.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="suggestion-input">
+                                <div class="form-group">
+                                    <textarea id="input-la-vegas" rows="8" class="form-control"></textarea>
+                                </div>
+                                <div class="text-right">
+                                    <p>
+                                        <button class="btn btn-success btn-suggest" data-trip-step="la1">Suggest</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal ask name -->
+    <div class="modal fade" id="modal-name" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h3>May I ask your name please?</h3>
+                    <div class="form-group">
+                        <input id="input-author-name" type="text" class="form-control">
+                    </div>
+                    <p><button id="btn-save-name" class="btn btn-success">Save</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.19/firebase.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+    (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function() {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = '//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>
