@@ -41,9 +41,9 @@ var tripData = {
         title: 'Come back to LA through the coast',
         time: 'to update',
         map: {
-            lat: 37.77493,
-            lng: -122.41942,
-            zoom: 10
+            lat: 35.7373676,
+            lng: -120.1404361,
+            zoom: 7
         }
     }]
 };
@@ -60,6 +60,21 @@ var tripData = {
     // firebase configuration
     var firebase = new Firebase('https://travelsuggestion.firebaseio.com/');
 
+    var entityMap = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': '&quot;',
+        "'": '&#39;',
+        "/": '&#x2F;'
+    };
+
+    function escapeHtml(string) {
+        return String(string).replace(/[&<>"'\/]/g, function(s) {
+            return entityMap[s];
+        });
+    }
+
     // save a new comment
     function pushComment(location, author, comment) {
         firebase.push({
@@ -75,6 +90,7 @@ var tripData = {
 
     // insert comment in the specified location
     function insertComment(location, author, comment) {
+        comment = escapeHtml(comment);
         var newComment = '<div class="suggestion animated fadeIn"><div class="suggestion-author">' + author + '</div><p>' + comment + '</p></div>';
         $('#' + location + ' .suggestion-list').append(newComment);
         $('#' + location + ' .empty-suggestion').remove();
