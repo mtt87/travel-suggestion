@@ -19,6 +19,8 @@
     "smarttabs": true,
     "jquery": true,
     "globals": {
-        "Firebase": true
+        "Firebase": true,
+        "FirebaseSimpleLogin": true,
+        "Mustache": true
     }
 }

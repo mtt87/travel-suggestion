@@ -1,6 +1,7 @@
 {
   "name": "travelsuggest",
   "version": "0.0.0",
+  "repository": "https://github.com/mtt87/travel-suggestion",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -16,6 +17,7 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-uglify": "~0.5.1",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-gh-pages": "^0.9.1",
     "grunt-mocha": "~0.4.11",
     "grunt-newer": "~0.7.0",
     "grunt-rev": "~0.1.0",

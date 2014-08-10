@@ -7,7 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -26,6 +26,15 @@ module.exports = function (grunt) {
 
         // Project settings
         config: config,
+
+
+        // publish to gh-pages
+        'gh-pages': {
+            options: {
+                base: 'dist'
+            },
+            src: ['**']
+        },
 
         // Watches files for changes and runs tasks based on the changed files
         watch: {
@@ -163,7 +172,7 @@ module.exports = function (grunt) {
         wiredep: {
             app: {
                 src: ['<%= config.app %>/index.html'],
-                exclude: ['bower_components/bootstrap/dist/js/bootstrap.js','bower_components/jquery/dist/jquery.js','bower_components/polymer/polymer.js','bower_components/platform/platform.js']
+                exclude: ['bower_components/bootstrap/dist/js/bootstrap.js', 'bower_components/jquery/dist/jquery.js', 'bower_components/polymer/polymer.js', 'bower_components/platform/platform.js']
             }
         },
 
@@ -286,6 +295,14 @@ module.exports = function (grunt) {
                         '{,*/}*.html',
                         'styles/fonts/{,*/}*.*'
                     ]
+                },{
+                    expand: true,
+                    dot: false,
+                    cwd: 'bower_components',
+                    dest: '<%= config.dist %>/bower_components',
+                    src: [
+                        '{,*/}*.*'
+                    ]
                 }]
             },
             styles: {
@@ -314,7 +331,7 @@ module.exports = function (grunt) {
     });
 
 
-    grunt.registerTask('serve', function (target) {
+    grunt.registerTask('serve', function(target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
         }
@@ -328,12 +345,12 @@ module.exports = function (grunt) {
         ]);
     });
 
-    grunt.registerTask('server', function (target) {
+    grunt.registerTask('server', function(target) {
         grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         grunt.task.run([target ? ('serve:' + target) : 'serve']);
     });
 
-    grunt.registerTask('test', function (target) {
+    grunt.registerTask('test', function(target) {
         if (target !== 'watch') {
             grunt.task.run([
                 'clean:server',
@@ -367,4 +384,6 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+
+    grunt.registerTask('publish', 'gh-pages');
 };

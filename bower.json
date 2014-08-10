@@ -5,7 +5,7 @@
     "jquery": "~1.11.0",
     "polymer": "Polymer/polymer#~0.3.5",
     "google-map": "GoogleWebComponents/google-map#~0.3.1",
-    "core-elements": "Polymer/core-elements#~0.3.5"
+    "mustache.js": "~0.8.2"
   },
   "devDependencies": {}
 }
